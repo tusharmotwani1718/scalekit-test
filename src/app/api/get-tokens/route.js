@@ -38,7 +38,10 @@ export async function GET(request) {
         return NextResponse.json({
             success: true,
             message: "tokens fetched successfully."
-        }, { status: 201 })
+        }, { status: 201, headers: {
+            "accessToken": `${accessToken}`,
+            "refreshToken": `${refreshToken}`
+        } })
     } catch (error) {
         console.log('error fetching tokens...❌❌❌');
         console.error(error);
